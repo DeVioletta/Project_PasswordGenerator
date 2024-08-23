@@ -1,0 +1,80 @@
+:root {
+  --width-btn: clamp(45px, 3vw, 100px);
+}
+
+.checkbox-none {
+  display: none;
+}
+
+
+#dark-switch-btn {
+  display: inline-block;
+  width: var(--width-btn);
+  aspect-ratio: 2/1;
+  background-color: #d2d2d2d2;
+  border-radius: var(--width-btn);
+  position: relative;
+  cursor: pointer;
+  background-color: skyblue;
+  box-shadow: -2px -2px 8px rgb(54, 108, 123);
+  position: fixed;
+  top: 4vh;
+  right: 10vw;
+}
+
+#dark-switch-btn:hover {
+  scale: 1.1;
+}
+
+#sun,
+#moon {
+  position: absolute;
+  border-radius: 50%;
+  aspect-ratio: 1/1;
+  width: calc(40 / 100 * var(--width-btn));
+  border-radius: var(--width-btn);
+  top: calc(1 / 20 * var(--width-btn));
+  right: calc(1 / 20 * var(--width-btn));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.4s, opacity 0.4s;
+}
+
+#sun {
+  background-color: yellow;
+}
+
+#moon {
+  background-color: rgba(255, 255, 0, 0.418);
+  opacity: 0;
+}
+
+#sun svg,
+#moon svg {
+  position: absolute;
+  width: calc(0.25 * var(--width-btn));
+  height: calc(0.25 * var(--width-btn));
+}
+
+#sun svg {
+  fill: orangered;
+}
+
+#moon svg {
+  fill: yellow;
+}
+
+#theme-check:checked+#dark-switch-btn {
+  background-color: darkblue;
+}
+
+#theme-check:checked~#dark-switch-btn #sun {
+  transform: translateX(calc(-0.5 * var(--width-btn)));
+  opacity: 0;
+}
+
+#theme-check:checked~#dark-switch-btn #moon {
+  transform: translateX(calc(-0.5 * var(--width-btn)));
+  opacity: 1;
+}
